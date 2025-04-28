@@ -14,7 +14,17 @@ logger = logging.getLogger(__name__)
 
 # IDs listing
 PRODUCT_IDS =  ["CEM7073T",
-
+                "CL3403",
+                "1021W",
+                "1408W",
+                "248-151TD",
+                "712R",
+                "CD2003P-2",
+                "CDMG2310",
+                "VHECP2333T",
+                "FPM2516T-5",
+                "L3607",
+                "AFL3523A"
                 ]
 
 
@@ -26,6 +36,10 @@ if __name__ == "__main__":
         try:
             # scraps each product
             scraped_data = scrape_product_page(p_id)
+            
+            if scraped_data is None:
+                logger.error(f"Browser closed {p_id} interrumpting the pipeline.")
+                break
 
             if scraped_data:
                 # save the structured data to a PRODUCT_ID.json file
