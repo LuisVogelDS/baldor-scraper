@@ -1,5 +1,0 @@
-.venv/
-
-output/
-
-.vscode/
